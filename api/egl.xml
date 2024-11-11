@@ -88,7 +88,7 @@
     <!-- Bitmasks each have their own namespace, as do a few other
          categories of enumeration -->
 
-    <enums namespace="EGLSurfaceTypeMask" type="bitmask" comment="EGL_SURFACE_TYPE bits">
+    <enums namespace="EGLSurfaceTypeMask" group="SurfaceTypeMask" type="bitmask" comment="EGL_SURFACE_TYPE bits">
         <enum value="0x0001" name="EGL_PBUFFER_BIT"/>
         <enum value="0x0002" name="EGL_PIXMAP_BIT"/>
         <enum value="0x0004" name="EGL_WINDOW_BIT"/>
@@ -109,7 +109,7 @@
         <enum value="0x1000" name="EGL_MUTABLE_RENDER_BUFFER_BIT_KHR"/>
     </enums>
 
-    <enums namespace="EGLRenderableTypeMask" type="bitmask" comment="EGL_RENDERABLE_TYPE bits">
+    <enums namespace="EGLRenderableTypeMask" group="RenderableTypeMask" type="bitmask" comment="EGL_RENDERABLE_TYPE bits">
         <enum value="0x0001" name="EGL_OPENGL_ES_BIT"/>
         <enum value="0x0002" name="EGL_OPENVG_BIT"/>
         <enum value="0x0004" name="EGL_OPENGL_ES2_BIT"/>
@@ -120,24 +120,24 @@
         <enum value="0x00000040" name="EGL_OPENGL_ES3_BIT_KHR" alias="EGL_OPENGL_ES3_BIT"/>
     </enums>
 
-    <enums namespace="EGLLockUsageHintKHRMask" type="bitmask" comment="EGL_LOCK_USAGE_HINT_KHR bits">
+    <enums namespace="EGLLockUsageHintKHRMask" group="LockUsageHintKHRMask" type="bitmask" comment="EGL_LOCK_USAGE_HINT_KHR bits">
         <enum value="0x0001" name="EGL_READ_SURFACE_BIT_KHR"/>
         <enum value="0x0002" name="EGL_WRITE_SURFACE_BIT_KHR"/>
     </enums>
 
-    <enums namespace="EGLNativeBufferUsageFlags" type="bitmask" comment="EGL_NATIVE_BUFFER_USAGE_ANDROID bits">
+    <enums namespace="EGLNativeBufferUsageFlags" group="NativeBufferUsageFlags" type="bitmask" comment="EGL_NATIVE_BUFFER_USAGE_ANDROID bits">
         <enum value="0x00000001" name="EGL_NATIVE_BUFFER_USAGE_PROTECTED_BIT_ANDROID"/>
         <enum value="0x00000002" name="EGL_NATIVE_BUFFER_USAGE_RENDERBUFFER_BIT_ANDROID"/>
         <enum value="0x00000004" name="EGL_NATIVE_BUFFER_USAGE_TEXTURE_BIT_ANDROID"/>
     </enums>
 
-    <enums namespace="EGLSyncFlagsKHR" type="bitmask" comment="Fence/reusable sync wait bits">
-        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT"/>
-        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT_KHR" alias="EGL_SYNC_FLUSH_COMMANDS_BIT"/>
-        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT_NV" alias="EGL_SYNC_FLUSH_COMMANDS_BIT"/>
+    <enums namespace="EGLSyncFlagsKHR" group="SyncFlagsKHR" type="bitmask" comment="Fence/reusable sync wait bits">
+        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT" group="ClientWaitSyncFlags"/>
+        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT_KHR" group="ClientWaitSyncFlags" alias="EGL_SYNC_FLUSH_COMMANDS_BIT"/>
+        <enum value="0x0001" name="EGL_SYNC_FLUSH_COMMANDS_BIT_NV" group="ClientWaitSyncFlags" alias="EGL_SYNC_FLUSH_COMMANDS_BIT"/>
     </enums>
 
-    <enums namespace="EGLDRMBufferUseMESAMask" type="bitmask" comment="EGL_DRM_BUFFER_USE_MESA bits">
+    <enums namespace="EGLDRMBufferUseMESAMask" group="DRMBufferUseMESAMask" type="bitmask" comment="EGL_DRM_BUFFER_USE_MESA bits">
         <enum value="0x00000001" name="EGL_DRM_BUFFER_USE_SCANOUT_MESA"/>
         <enum value="0x00000002" name="EGL_DRM_BUFFER_USE_SHARE_MESA"/>
         <enum value="0x00000004" name="EGL_DRM_BUFFER_USE_CURSOR_MESA"/>
@@ -146,13 +146,13 @@
     <!-- Should be shared with GL, but aren't aren't since the
          FORWARD_COMPATIBLE and DEBUG_BIT values are swapped in the
          corresponding GL enums. Oops :-( -->
-    <enums namespace="EGLContextFlagMask" type="bitmask" comment="EGL_CONTEXT_FLAGS_KHR bits">
+    <enums namespace="EGLContextFlagMask" group="ContextFlags" type="bitmask" comment="EGL_CONTEXT_FLAGS_KHR bits">
         <enum value="0x00000001" name="EGL_CONTEXT_OPENGL_DEBUG_BIT_KHR"/>
         <enum value="0x00000002" name="EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE_BIT_KHR"/>
         <enum value="0x00000004" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS_BIT_KHR"/>
     </enums>
 
-    <enums namespace="EGLContextProfileMask" type="bitmask" comment="Shared with GL">
+    <enums namespace="EGLContextProfileMask" group="ContextProfileMask" type="bitmask" comment="Shared with GL">
         <enum value="0x00000001" name="EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT"/>
         <enum value="0x00000001" name="EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR" alias="EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT"/>
         <enum value="0x00000002" name="EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT"/>
@@ -168,18 +168,18 @@
          extensions and API versions). -->
 
     <enums namespace="EGL" start="0x0000" end="0x2FFF" vendor="KHR" comment="Reserved for enumerants shared with WGL, GLX, and GL">
-        <enum value="0" name="EGL_CONTEXT_RELEASE_BEHAVIOR_NONE_KHR"/>
-        <enum value="0x2097" name="EGL_CONTEXT_RELEASE_BEHAVIOR_KHR"/>
-        <enum value="0x2098" name="EGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_KHR"/>
+        <enum value="0" name="EGL_CONTEXT_RELEASE_BEHAVIOR_NONE_KHR" group="ContextReleaseBehavior"/>
+        <enum value="0x2097" name="EGL_CONTEXT_RELEASE_BEHAVIOR_KHR" group="ContextReleaseBehavior"/>
+        <enum value="0x2098" name="EGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_KHR" group="ContextReleaseBehavior"/>
     </enums>
 
     <enums namespace="EGL" group="Boolean" vendor="ARB">
-        <enum value="0" name="EGL_FALSE"/>
+        <enum value="0" name="EGL_FALSE" group="WaitSyncStatus"/>
         <enum value="1" name="EGL_TRUE"/>
     </enums>
 
     <enums namespace="EGL" group="SpecialNumbers" vendor="ARB" comment="Tokens whose numeric value is intrinsically meaningful">
-        <enum value="EGL_CAST(EGLint,-1)" name="EGL_DONT_CARE"/>
+        <enum value="EGL_CAST(EGLint,-1)" name="EGL_DONT_CARE" group="ConfigCaveat"/>
         <enum value="EGL_CAST(EGLint,-1)" name="EGL_UNKNOWN"/>
         <enum value="-1" name="EGL_NO_NATIVE_FENCE_FD_ANDROID"/>
         <enum value="0" name="EGL_DEPTH_ENCODING_NONE_NV"/>
@@ -205,71 +205,71 @@
     </enums>
 
     <enums namespace="EGL" start="0x3000" end="0x305F" vendor="KHR">
-        <enum value="0x3000" name="EGL_SUCCESS"/>
-        <enum value="0x3001" name="EGL_NOT_INITIALIZED"/>
-        <enum value="0x3002" name="EGL_BAD_ACCESS"/>
-        <enum value="0x3003" name="EGL_BAD_ALLOC"/>
-        <enum value="0x3004" name="EGL_BAD_ATTRIBUTE"/>
-        <enum value="0x3005" name="EGL_BAD_CONFIG"/>
-        <enum value="0x3006" name="EGL_BAD_CONTEXT"/>
-        <enum value="0x3007" name="EGL_BAD_CURRENT_SURFACE"/>
-        <enum value="0x3008" name="EGL_BAD_DISPLAY"/>
-        <enum value="0x3009" name="EGL_BAD_MATCH"/>
-        <enum value="0x300A" name="EGL_BAD_NATIVE_PIXMAP"/>
-        <enum value="0x300B" name="EGL_BAD_NATIVE_WINDOW"/>
-        <enum value="0x300C" name="EGL_BAD_PARAMETER"/>
-        <enum value="0x300D" name="EGL_BAD_SURFACE"/>
-        <enum value="0x300E" name="EGL_CONTEXT_LOST"/>
+        <enum value="0x3000" name="EGL_SUCCESS" group="ErrorCode"/>
+        <enum value="0x3001" name="EGL_NOT_INITIALIZED" group="ErrorCode"/>
+        <enum value="0x3002" name="EGL_BAD_ACCESS" group="ErrorCode"/>
+        <enum value="0x3003" name="EGL_BAD_ALLOC" group="ErrorCode"/>
+        <enum value="0x3004" name="EGL_BAD_ATTRIBUTE" group="ErrorCode"/>
+        <enum value="0x3005" name="EGL_BAD_CONFIG" group="ErrorCode"/>
+        <enum value="0x3006" name="EGL_BAD_CONTEXT" group="ErrorCode"/>
+        <enum value="0x3007" name="EGL_BAD_CURRENT_SURFACE" group="ErrorCode"/>
+        <enum value="0x3008" name="EGL_BAD_DISPLAY" group="ErrorCode"/>
+        <enum value="0x3009" name="EGL_BAD_MATCH" group="ErrorCode"/>
+        <enum value="0x300A" name="EGL_BAD_NATIVE_PIXMAP" group="ErrorCode"/>
+        <enum value="0x300B" name="EGL_BAD_NATIVE_WINDOW" group="ErrorCode"/>
+        <enum value="0x300C" name="EGL_BAD_PARAMETER" group="ErrorCode"/>
+        <enum value="0x300D" name="EGL_BAD_SURFACE" group="ErrorCode"/>
+        <enum value="0x300E" name="EGL_CONTEXT_LOST" group="ErrorCode"/>
             <unused start="0x300F" end="0x301F" comment="for additional errors"/>
-        <enum value="0x3020" name="EGL_BUFFER_SIZE"/>
-        <enum value="0x3021" name="EGL_ALPHA_SIZE"/>
-        <enum value="0x3022" name="EGL_BLUE_SIZE"/>
-        <enum value="0x3023" name="EGL_GREEN_SIZE"/>
-        <enum value="0x3024" name="EGL_RED_SIZE"/>
-        <enum value="0x3025" name="EGL_DEPTH_SIZE"/>
-        <enum value="0x3026" name="EGL_STENCIL_SIZE"/>
-        <enum value="0x3027" name="EGL_CONFIG_CAVEAT"/>
-        <enum value="0x3028" name="EGL_CONFIG_ID"/>
-        <enum value="0x3029" name="EGL_LEVEL"/>
-        <enum value="0x302A" name="EGL_MAX_PBUFFER_HEIGHT"/>
-        <enum value="0x302B" name="EGL_MAX_PBUFFER_PIXELS"/>
-        <enum value="0x302C" name="EGL_MAX_PBUFFER_WIDTH"/>
-        <enum value="0x302D" name="EGL_NATIVE_RENDERABLE"/>
-        <enum value="0x302E" name="EGL_NATIVE_VISUAL_ID"/>
-        <enum value="0x302F" name="EGL_NATIVE_VISUAL_TYPE"/>
-        <enum value="0x3031" name="EGL_SAMPLES"/>
-        <enum value="0x3032" name="EGL_SAMPLE_BUFFERS"/>
-        <enum value="0x3033" name="EGL_SURFACE_TYPE"/>
-        <enum value="0x3034" name="EGL_TRANSPARENT_TYPE"/>
-        <enum value="0x3035" name="EGL_TRANSPARENT_BLUE_VALUE"/>
-        <enum value="0x3036" name="EGL_TRANSPARENT_GREEN_VALUE"/>
-        <enum value="0x3037" name="EGL_TRANSPARENT_RED_VALUE"/>
-        <enum value="0x3038" name="EGL_NONE" comment="Attribute list terminator"/>
-        <enum value="0x3039" name="EGL_BIND_TO_TEXTURE_RGB"/>
-        <enum value="0x303A" name="EGL_BIND_TO_TEXTURE_RGBA"/>
-        <enum value="0x303B" name="EGL_MIN_SWAP_INTERVAL"/>
-        <enum value="0x303C" name="EGL_MAX_SWAP_INTERVAL"/>
-        <enum value="0x303D" name="EGL_LUMINANCE_SIZE"/>
-        <enum value="0x303E" name="EGL_ALPHA_MASK_SIZE"/>
-        <enum value="0x303F" name="EGL_COLOR_BUFFER_TYPE"/>
-        <enum value="0x3040" name="EGL_RENDERABLE_TYPE"/>
-        <enum value="0x3041" name="EGL_MATCH_NATIVE_PIXMAP"/>
-        <enum value="0x3042" name="EGL_CONFORMANT"/>
-        <enum value="0x3042" name="EGL_CONFORMANT_KHR"/>
-        <enum value="0x3043" name="EGL_MATCH_FORMAT_KHR"/>
+        <enum value="0x3020" name="EGL_BUFFER_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3021" name="EGL_ALPHA_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3022" name="EGL_BLUE_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3023" name="EGL_GREEN_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3024" name="EGL_RED_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3025" name="EGL_DEPTH_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3026" name="EGL_STENCIL_SIZE" group="ConfigAttribute"/>
+        <enum value="0x3027" name="EGL_CONFIG_CAVEAT" group="ConfigAttribute"/>
+        <enum value="0x3028" name="EGL_CONFIG_ID" group="ConfigAttribute,SurfaceQueryAttribute,ContextQueryAttribute"/>
+        <enum value="0x3029" name="EGL_LEVEL" group="ConfigAttribute"/>
+        <enum value="0x302A" name="EGL_MAX_PBUFFER_HEIGHT" group="ConfigAttribute"/>
+        <enum value="0x302B" name="EGL_MAX_PBUFFER_PIXELS" group="ConfigAttribute"/>
+        <enum value="0x302C" name="EGL_MAX_PBUFFER_WIDTH" group="ConfigAttribute"/>
+        <enum value="0x302D" name="EGL_NATIVE_RENDERABLE" group="ConfigAttribute"/>
+        <enum value="0x302E" name="EGL_NATIVE_VISUAL_ID" group="ConfigAttribute"/>
+        <enum value="0x302F" name="EGL_NATIVE_VISUAL_TYPE" group="ConfigAttribute"/>
+        <enum value="0x3031" name="EGL_SAMPLES" group="ConfigAttribute"/>
+        <enum value="0x3032" name="EGL_SAMPLE_BUFFERS" group="ConfigAttribute"/>
+        <enum value="0x3033" name="EGL_SURFACE_TYPE" group="ConfigAttribute"/>
+        <enum value="0x3034" name="EGL_TRANSPARENT_TYPE" group="ConfigAttribute"/>
+        <enum value="0x3035" name="EGL_TRANSPARENT_BLUE_VALUE" group="ConfigAttribute"/>
+        <enum value="0x3036" name="EGL_TRANSPARENT_GREEN_VALUE" group="ConfigAttribute"/>
+        <enum value="0x3037" name="EGL_TRANSPARENT_RED_VALUE" group="ConfigAttribute"/>
+        <enum value="0x3038" name="EGL_NONE" group="ConfigAttribute,SurfaceAttribute,ContextAttribute,ConfigCaveat,ImageAttribute" comment="Attribute list terminator"/>
+        <enum value="0x3039" name="EGL_BIND_TO_TEXTURE_RGB" group="ConfigAttribute"/>
+        <enum value="0x303A" name="EGL_BIND_TO_TEXTURE_RGBA" group="ConfigAttribute"/>
+        <enum value="0x303B" name="EGL_MIN_SWAP_INTERVAL" group="ConfigAttribute"/>
+        <enum value="0x303C" name="EGL_MAX_SWAP_INTERVAL" group="ConfigAttribute"/>
+        <enum value="0x303D" name="EGL_LUMINANCE_SIZE" group="ConfigAttribute"/>
+        <enum value="0x303E" name="EGL_ALPHA_MASK_SIZE" group="ConfigAttribute"/>
+        <enum value="0x303F" name="EGL_COLOR_BUFFER_TYPE" group="ConfigAttribute"/>
+        <enum value="0x3040" name="EGL_RENDERABLE_TYPE" group="ConfigAttribute"/>
+        <enum value="0x3041" name="EGL_MATCH_NATIVE_PIXMAP" group="ConfigAttribute"/>
+        <enum value="0x3042" name="EGL_CONFORMANT" group="ConfigAttribute"/>
+        <enum value="0x3042" name="EGL_CONFORMANT_KHR" group="ConfigAttribute"/>
+        <enum value="0x3043" name="EGL_MATCH_FORMAT_KHR" group="ConfigAttribute"/>
             <unused start="0x3044" end="0x304F" comment="for additional config attributes"/>
-        <enum value="0x3050" name="EGL_SLOW_CONFIG"/>
-        <enum value="0x3051" name="EGL_NON_CONFORMANT_CONFIG"/>
+        <enum value="0x3050" name="EGL_SLOW_CONFIG" group="ConfigCaveat"/>
+        <enum value="0x3051" name="EGL_NON_CONFORMANT_CONFIG" group="ConfigCaveat"/>
         <enum value="0x3052" name="EGL_TRANSPARENT_RGB"/>
-        <enum value="0x3053" name="EGL_VENDOR"/>
-        <enum value="0x3054" name="EGL_VERSION"/>
-        <enum value="0x3055" name="EGL_EXTENSIONS"/>
-        <enum value="0x3056" name="EGL_HEIGHT"/>
-        <enum value="0x3057" name="EGL_WIDTH"/>
-        <enum value="0x3058" name="EGL_LARGEST_PBUFFER"/>
-        <enum value="0x3059" name="EGL_DRAW"/>
-        <enum value="0x305A" name="EGL_READ"/>
-        <enum value="0x305B" name="EGL_CORE_NATIVE_ENGINE"/>
+        <enum value="0x3053" name="EGL_VENDOR" group="StringName"/>
+        <enum value="0x3054" name="EGL_VERSION" group="StringName"/>
+        <enum value="0x3055" name="EGL_EXTENSIONS" group="StringName"/>
+        <enum value="0x3056" name="EGL_HEIGHT" group="SurfaceQueryAttribute"/>
+        <enum value="0x3057" name="EGL_WIDTH" group="SurfaceQueryAttribute"/>
+        <enum value="0x3058" name="EGL_LARGEST_PBUFFER" group="SurfaceQueryAttribute"/>
+        <enum value="0x3059" name="EGL_DRAW" group="ReadDrawFlags"/>
+        <enum value="0x305A" name="EGL_READ" group="ReadDrawFlags"/>
+        <enum value="0x305B" name="EGL_CORE_NATIVE_ENGINE" group="NativeEngine"/>
         <enum value="0x305C" name="EGL_NO_TEXTURE"/>
         <enum value="0x305D" name="EGL_TEXTURE_RGB"/>
         <enum value="0x305E" name="EGL_TEXTURE_RGBA"/>
@@ -286,54 +286,54 @@
     </enums>
 
     <enums namespace="EGL" start="0x3080-0x30AF" vendor="KHR">
-        <enum value="0x3080" name="EGL_TEXTURE_FORMAT"/>
-        <enum value="0x3081" name="EGL_TEXTURE_TARGET"/>
-        <enum value="0x3082" name="EGL_MIPMAP_TEXTURE"/>
-        <enum value="0x3083" name="EGL_MIPMAP_LEVEL"/>
-        <enum value="0x3084" name="EGL_BACK_BUFFER"/>
-        <enum value="0x3085" name="EGL_SINGLE_BUFFER"/>
-        <enum value="0x3086" name="EGL_RENDER_BUFFER"/>
+        <enum value="0x3080" name="EGL_TEXTURE_FORMAT" group="SurfaceQueryAttribute"/>
+        <enum value="0x3081" name="EGL_TEXTURE_TARGET" group="SurfaceQueryAttribute"/>
+        <enum value="0x3082" name="EGL_MIPMAP_TEXTURE" group="SurfaceQueryAttribute"/>
+        <enum value="0x3083" name="EGL_MIPMAP_LEVEL" group="SurfaceQueryAttribute,SurfaceAttribute"/>
+        <enum value="0x3084" name="EGL_BACK_BUFFER" group="RenderBuffer"/>
+        <enum value="0x3085" name="EGL_SINGLE_BUFFER" group="RenderBuffer"/>
+        <enum value="0x3086" name="EGL_RENDER_BUFFER" group="SurfaceCreateAttribute,SurfaceQueryAttribute,ContextQueryAttribute"/>
         <enum value="0x3087" name="EGL_COLORSPACE" alias="EGL_VG_COLORSPACE"/>
-        <enum value="0x3087" name="EGL_VG_COLORSPACE"/>
+        <enum value="0x3087" name="EGL_VG_COLORSPACE" group="SurfaceCreateAttribute,SurfaceQueryAttribute,PixmapSurfaceAttribute"/>
         <enum value="0x3088" name="EGL_ALPHA_FORMAT" alias="EGL_VG_ALPHA_FORMAT"/>
-        <enum value="0x3088" name="EGL_VG_ALPHA_FORMAT"/>
-        <enum value="0x3089" name="EGL_COLORSPACE_sRGB"/>
-        <enum value="0x3089" name="EGL_GL_COLORSPACE_SRGB" alias="EGL_COLORSPACE_sRGB"/>
-        <enum value="0x3089" name="EGL_GL_COLORSPACE_SRGB_KHR" alias="EGL_COLORSPACE_sRGB"/>
+        <enum value="0x3088" name="EGL_VG_ALPHA_FORMAT" group="SurfaceCreateAttribute,SurfaceQueryAttribute,PixmapSurfaceAttribute"/>
+        <enum value="0x3089" name="EGL_COLORSPACE_sRGB" group="GLColorspace"/>
+        <enum value="0x3089" name="EGL_GL_COLORSPACE_SRGB" group="GLColorspace" alias="EGL_COLORSPACE_sRGB"/>
+        <enum value="0x3089" name="EGL_GL_COLORSPACE_SRGB_KHR" group="GLColorspace" alias="EGL_COLORSPACE_sRGB"/>
         <enum value="0x3089" name="EGL_VG_COLORSPACE_sRGB" alias="EGL_COLORSPACE_sRGB"/>
         <enum value="0x308A" name="EGL_COLORSPACE_LINEAR"/>
-        <enum value="0x308A" name="EGL_GL_COLORSPACE_LINEAR" alias="EGL_COLORSPACE_LINEAR"/>
-        <enum value="0x308A" name="EGL_GL_COLORSPACE_LINEAR_KHR" alias="EGL_COLORSPACE_LINEAR"/>
+        <enum value="0x308A" name="EGL_GL_COLORSPACE_LINEAR" group="GLColorspace" alias="EGL_COLORSPACE_LINEAR"/>
+        <enum value="0x308A" name="EGL_GL_COLORSPACE_LINEAR_KHR" group="GLColorspace" alias="EGL_COLORSPACE_LINEAR"/>
         <enum value="0x308A" name="EGL_VG_COLORSPACE_LINEAR" alias="EGL_COLORSPACE_LINEAR"/>
         <enum value="0x308B" name="EGL_ALPHA_FORMAT_NONPRE" alias="EGL_VG_ALPHA_FORMAT_NONPRE"/>
         <enum value="0x308B" name="EGL_VG_ALPHA_FORMAT_NONPRE"/>
         <enum value="0x308C" name="EGL_ALPHA_FORMAT_PRE" alias="EGL_VG_ALPHA_FORMAT_PRE"/>
         <enum value="0x308C" name="EGL_VG_ALPHA_FORMAT_PRE"/>
-        <enum value="0x308D" name="EGL_CLIENT_APIS"/>
+        <enum value="0x308D" name="EGL_CLIENT_APIS" group="StringName"/>
         <enum value="0x308E" name="EGL_RGB_BUFFER"/>
         <enum value="0x308F" name="EGL_LUMINANCE_BUFFER"/>
-        <enum value="0x3090" name="EGL_HORIZONTAL_RESOLUTION"/>
-        <enum value="0x3091" name="EGL_VERTICAL_RESOLUTION"/>
-        <enum value="0x3092" name="EGL_PIXEL_ASPECT_RATIO"/>
-        <enum value="0x3093" name="EGL_SWAP_BEHAVIOR"/>
+        <enum value="0x3090" name="EGL_HORIZONTAL_RESOLUTION" group="SurfaceQueryAttribute"/>
+        <enum value="0x3091" name="EGL_VERTICAL_RESOLUTION" group="SurfaceQueryAttribute"/>
+        <enum value="0x3092" name="EGL_PIXEL_ASPECT_RATIO" group="SurfaceQueryAttribute"/>
+        <enum value="0x3093" name="EGL_SWAP_BEHAVIOR" group="SurfaceQueryAttribute,SurfaceAttribute"/>
         <enum value="0x3094" name="EGL_BUFFER_PRESERVED"/>
         <enum value="0x3095" name="EGL_BUFFER_DESTROYED"/>
-        <enum value="0x3096" name="EGL_OPENVG_IMAGE"/>
-        <enum value="0x3097" name="EGL_CONTEXT_CLIENT_TYPE"/>
-        <enum value="0x3098" name="EGL_CONTEXT_CLIENT_VERSION"/>
-        <enum value="0x3098" name="EGL_CONTEXT_MAJOR_VERSION" alias="EGL_CONTEXT_CLIENT_VERSION"/>
-        <enum value="0x3098" name="EGL_CONTEXT_MAJOR_VERSION_KHR" alias="EGL_CONTEXT_CLIENT_VERSION"/>
-        <enum value="0x3099" name="EGL_MULTISAMPLE_RESOLVE"/>
-        <enum value="0x309A" name="EGL_MULTISAMPLE_RESOLVE_DEFAULT"/>
-        <enum value="0x309B" name="EGL_MULTISAMPLE_RESOLVE_BOX"/>
+        <enum value="0x3096" name="EGL_OPENVG_IMAGE" group="ClientBufferType"/>
+        <enum value="0x3097" name="EGL_CONTEXT_CLIENT_TYPE" group="ContextQueryAttribute"/>
+        <enum value="0x3098" name="EGL_CONTEXT_CLIENT_VERSION" group="ContextAttribute,ContextQueryAttribute"/>
+        <enum value="0x3098" name="EGL_CONTEXT_MAJOR_VERSION" group="ContextAttribute" alias="EGL_CONTEXT_CLIENT_VERSION"/>
+        <enum value="0x3098" name="EGL_CONTEXT_MAJOR_VERSION_KHR" group="ContextAttribute" alias="EGL_CONTEXT_CLIENT_VERSION"/>
+        <enum value="0x3099" name="EGL_MULTISAMPLE_RESOLVE" group="SurfaceQueryAttribute,SurfaceAttribute"/>
+        <enum value="0x309A" name="EGL_MULTISAMPLE_RESOLVE_DEFAULT" group="MultisampleResolve"/>
+        <enum value="0x309B" name="EGL_MULTISAMPLE_RESOLVE_BOX" group="MultisampleResolve"/>
         <enum value="0x309C" name="EGL_CL_EVENT_HANDLE"/>
         <enum value="0x309C" name="EGL_CL_EVENT_HANDLE_KHR" alias="EGL_CL_EVENT_HANDLE"/>
-        <enum value="0x309D" name="EGL_GL_COLORSPACE"/>
-        <enum value="0x309D" name="EGL_GL_COLORSPACE_KHR" alias="EGL_GL_COLORSPACE"/>
+        <enum value="0x309D" name="EGL_GL_COLORSPACE" group="SurfaceCreateAttribute,SurfaceQueryAttribute,PixmapSurfaceAttribute"/>
+        <enum value="0x309D" name="EGL_GL_COLORSPACE_KHR" group="SurfaceCreateAttribute,SurfaceQueryAttribute" alias="EGL_GL_COLORSPACE"/>
             <unused start="0x309E" end="0x309F"/>
-        <enum value="0x30A0" name="EGL_OPENGL_ES_API"/>
-        <enum value="0x30A1" name="EGL_OPENVG_API"/>
-        <enum value="0x30A2" name="EGL_OPENGL_API"/>
+        <enum value="0x30A0" name="EGL_OPENGL_ES_API" group="RenderApi"/>
+        <enum value="0x30A1" name="EGL_OPENVG_API" group="RenderApi"/>
+        <enum value="0x30A2" name="EGL_OPENGL_API" group="RenderApi"/>
             <unused start="0x30A3" end="0x30AF" comment="for additional client API names"/>
     </enums>
 
@@ -358,12 +358,12 @@
         <enum value="0x30B9" name="EGL_GL_RENDERBUFFER"/>
         <enum value="0x30B9" name="EGL_GL_RENDERBUFFER_KHR" alias="EGL_GL_RENDERBUFFER"/>
         <enum value="0x30BA" name="EGL_VG_PARENT_IMAGE_KHR"/>
-        <enum value="0x30BC" name="EGL_GL_TEXTURE_LEVEL"/>
-        <enum value="0x30BC" name="EGL_GL_TEXTURE_LEVEL_KHR" alias="EGL_GL_TEXTURE_LEVEL"/>
-        <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET"/>
-        <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET_KHR" alias="EGL_GL_TEXTURE_ZOFFSET"/>
+        <enum value="0x30BC" name="EGL_GL_TEXTURE_LEVEL" group="ImageAttribute"/>
+        <enum value="0x30BC" name="EGL_GL_TEXTURE_LEVEL_KHR" group="ImageAttribute" alias="EGL_GL_TEXTURE_LEVEL"/>
+        <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET" group="ImageAttribute"/>
+        <enum value="0x30BD" name="EGL_GL_TEXTURE_ZOFFSET_KHR" group="ImageAttribute" alias="EGL_GL_TEXTURE_ZOFFSET"/>
         <enum value="0x30BE" name="EGL_POST_SUB_BUFFER_SUPPORTED_NV"/>
-        <enum value="0x30BF" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT"/>
+        <enum value="0x30BF" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT" group="ContextAttribute"/>
     </enums>
 
     <enums namespace="EGL" start="0x30C0-0x30CF" vendor="KHR">
@@ -371,24 +371,24 @@
         <enum value="0x30C1" name="EGL_FORMAT_RGB_565_KHR"/>
         <enum value="0x30C2" name="EGL_FORMAT_RGBA_8888_EXACT_KHR"/>
         <enum value="0x30C3" name="EGL_FORMAT_RGBA_8888_KHR"/>
-        <enum value="0x30C4" name="EGL_MAP_PRESERVE_PIXELS_KHR"/>
-        <enum value="0x30C5" name="EGL_LOCK_USAGE_HINT_KHR"/>
-        <enum value="0x30C6" name="EGL_BITMAP_POINTER_KHR"/>
-        <enum value="0x30C7" name="EGL_BITMAP_PITCH_KHR"/>
-        <enum value="0x30C8" name="EGL_BITMAP_ORIGIN_KHR"/>
-        <enum value="0x30C9" name="EGL_BITMAP_PIXEL_RED_OFFSET_KHR"/>
-        <enum value="0x30CA" name="EGL_BITMAP_PIXEL_GREEN_OFFSET_KHR"/>
-        <enum value="0x30CB" name="EGL_BITMAP_PIXEL_BLUE_OFFSET_KHR"/>
-        <enum value="0x30CC" name="EGL_BITMAP_PIXEL_ALPHA_OFFSET_KHR"/>
-        <enum value="0x30CD" name="EGL_BITMAP_PIXEL_LUMINANCE_OFFSET_KHR"/>
+        <enum value="0x30C4" name="EGL_MAP_PRESERVE_PIXELS_KHR" group="LockAttribute"/>
+        <enum value="0x30C5" name="EGL_LOCK_USAGE_HINT_KHR" group="LockAttribute"/>
+        <enum value="0x30C6" name="EGL_BITMAP_POINTER_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30C7" name="EGL_BITMAP_PITCH_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30C8" name="EGL_BITMAP_ORIGIN_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30C9" name="EGL_BITMAP_PIXEL_RED_OFFSET_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30CA" name="EGL_BITMAP_PIXEL_GREEN_OFFSET_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30CB" name="EGL_BITMAP_PIXEL_BLUE_OFFSET_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30CC" name="EGL_BITMAP_PIXEL_ALPHA_OFFSET_KHR" group="SurfaceQueryAttribute"/>
+        <enum value="0x30CD" name="EGL_BITMAP_PIXEL_LUMINANCE_OFFSET_KHR" group="SurfaceQueryAttribute"/>
         <enum value="0x30CE" name="EGL_LOWER_LEFT_KHR"/>
         <enum value="0x30CF" name="EGL_UPPER_LEFT_KHR"/>
     </enums>
 
     <enums namespace="EGL" start="0x30D0" end="0x30DF" vendor="Symbian" comment="Reserved for Robert Palmer (bug #2545)">
             <unused start="0x30D0" end="0x30D1"/>
-        <enum value="0x30D2" name="EGL_IMAGE_PRESERVED"/>
-        <enum value="0x30D2" name="EGL_IMAGE_PRESERVED_KHR"/>
+        <enum value="0x30D2" name="EGL_IMAGE_PRESERVED" group="ImageAttribute"/>
+        <enum value="0x30D2" name="EGL_IMAGE_PRESERVED_KHR" group="ImageAttribute"/>
             <unused start="0x30D3" end="0x30D9"/>
         <enum value="0x30DA" name="EGL_SHARED_IMAGE_NOK" comment="Unreleased extension"/>
             <unused start="0x30DB" end="0x30DF"/>
@@ -400,54 +400,54 @@
         <enum value="0x30E2" name="EGL_DEPTH_ENCODING_NV"/>
         <enum value="0x30E3" name="EGL_DEPTH_ENCODING_NONLINEAR_NV"/>
             <unused start="0x30E4" end="0x30E5"/>
-        <enum value="0x30E6" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE_NV"/>
-        <enum value="0x30E7" name="EGL_SYNC_STATUS_NV"/>
-        <enum value="0x30E8" name="EGL_SIGNALED_NV"/>
-        <enum value="0x30E9" name="EGL_UNSIGNALED_NV"/>
-        <enum value="0x30EA" name="EGL_ALREADY_SIGNALED_NV"/>
-        <enum value="0x30EB" name="EGL_TIMEOUT_EXPIRED_NV"/>
-        <enum value="0x30EC" name="EGL_CONDITION_SATISFIED_NV"/>
-        <enum value="0x30ED" name="EGL_SYNC_TYPE_NV"/>
-        <enum value="0x30EE" name="EGL_SYNC_CONDITION_NV"/>
-        <enum value="0x30EF" name="EGL_SYNC_FENCE_NV"/>
+        <enum value="0x30E6" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE_NV" group="SyncCondition"/>
+        <enum value="0x30E7" name="EGL_SYNC_STATUS_NV" group="SyncAttribute"/>
+        <enum value="0x30E8" name="EGL_SIGNALED_NV" group="SyncStatus"/>
+        <enum value="0x30E9" name="EGL_UNSIGNALED_NV" group="SyncStatus"/>
+        <enum value="0x30EA" name="EGL_ALREADY_SIGNALED_NV" group="WaitSyncStatus"/>
+        <enum value="0x30EB" name="EGL_TIMEOUT_EXPIRED_NV" group="WaitSyncStatus"/>
+        <enum value="0x30EC" name="EGL_CONDITION_SATISFIED_NV" group="WaitSyncStatus"/>
+        <enum value="0x30ED" name="EGL_SYNC_TYPE_NV" group="SyncAttribute"/>
+        <enum value="0x30EE" name="EGL_SYNC_CONDITION_NV" group="SyncAttribute"/>
+        <enum value="0x30EF" name="EGL_SYNC_FENCE_NV" group="SyncType"/>
     </enums>
 
     <enums namespace="EGL" start="0x30F0" end="0x30FF" vendor="KHR">
-        <enum value="0x30F0" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE"/>
-        <enum value="0x30F0" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE_KHR" alias="EGL_SYNC_PRIOR_COMMANDS_COMPLETE"/>
-        <enum value="0x30F1" name="EGL_SYNC_STATUS"/>
-        <enum value="0x30F1" name="EGL_SYNC_STATUS_KHR" alias="EGL_SYNC_STATUS"/>
-        <enum value="0x30F2" name="EGL_SIGNALED"/>
-        <enum value="0x30F2" name="EGL_SIGNALED_KHR" alias="EGL_SIGNALED"/>
-        <enum value="0x30F3" name="EGL_UNSIGNALED"/>
-        <enum value="0x30F3" name="EGL_UNSIGNALED_KHR" alias="EGL_UNSIGNALED"/>
-        <enum value="0x30F5" name="EGL_TIMEOUT_EXPIRED"/>
-        <enum value="0x30F5" name="EGL_TIMEOUT_EXPIRED_KHR" alias="EGL_TIMEOUT_EXPIRED"/>
-        <enum value="0x30F6" name="EGL_CONDITION_SATISFIED"/>
-        <enum value="0x30F6" name="EGL_CONDITION_SATISFIED_KHR" alias="EGL_CONDITION_SATISFIED"/>
-        <enum value="0x30F7" name="EGL_SYNC_TYPE"/>
-        <enum value="0x30F7" name="EGL_SYNC_TYPE_KHR" alias="EGL_SYNC_TYPE"/>
-        <enum value="0x30F8" name="EGL_SYNC_CONDITION"/>
-        <enum value="0x30F8" name="EGL_SYNC_CONDITION_KHR" alias="EGL_SYNC_CONDITION"/>
-        <enum value="0x30F9" name="EGL_SYNC_FENCE"/>
-        <enum value="0x30F9" name="EGL_SYNC_FENCE_KHR" alias="EGL_SYNC_FENCE"/>
-        <enum value="0x30FA" name="EGL_SYNC_REUSABLE_KHR"/>
-        <enum value="0x30FB" name="EGL_CONTEXT_MINOR_VERSION"/>
-        <enum value="0x30FB" name="EGL_CONTEXT_MINOR_VERSION_KHR" alias="EGL_CONTEXT_MINOR_VERSION"/>
-        <enum value="0x30FC" name="EGL_CONTEXT_FLAGS_KHR"/>
-        <enum value="0x30FD" name="EGL_CONTEXT_OPENGL_PROFILE_MASK"/>
-        <enum value="0x30FD" name="EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR" alias="EGL_CONTEXT_OPENGL_PROFILE_MASK"/>
-        <enum value="0x30FE" name="EGL_SYNC_CL_EVENT"/>
-        <enum value="0x30FE" name="EGL_SYNC_CL_EVENT_KHR" alias="EGL_SYNC_CL_EVENT"/>
-        <enum value="0x30FF" name="EGL_SYNC_CL_EVENT_COMPLETE"/>
-        <enum value="0x30FF" name="EGL_SYNC_CL_EVENT_COMPLETE_KHR" alias="EGL_SYNC_CL_EVENT_COMPLETE"/>
+        <enum value="0x30F0" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE" group="SyncCondition"/>
+        <enum value="0x30F0" name="EGL_SYNC_PRIOR_COMMANDS_COMPLETE_KHR" group="SyncCondition" alias="EGL_SYNC_PRIOR_COMMANDS_COMPLETE"/>
+        <enum value="0x30F1" name="EGL_SYNC_STATUS" group="SyncAttribute"/>
+        <enum value="0x30F1" name="EGL_SYNC_STATUS_KHR" group="SyncAttribute" alias="EGL_SYNC_STATUS"/>
+        <enum value="0x30F2" name="EGL_SIGNALED" group="SyncStatus"/>
+        <enum value="0x30F2" name="EGL_SIGNALED_KHR" group="SyncStatus" alias="EGL_SIGNALED"/>
+        <enum value="0x30F3" name="EGL_UNSIGNALED" group="SyncStatus"/>
+        <enum value="0x30F3" name="EGL_UNSIGNALED_KHR" group="SyncStatus" alias="EGL_UNSIGNALED"/>
+        <enum value="0x30F5" name="EGL_TIMEOUT_EXPIRED" group="WaitSyncStatus"/>
+        <enum value="0x30F5" name="EGL_TIMEOUT_EXPIRED_KHR" group="WaitSyncStatus" alias="EGL_TIMEOUT_EXPIRED"/>
+        <enum value="0x30F6" name="EGL_CONDITION_SATISFIED" group="WaitSyncStatus"/>
+        <enum value="0x30F6" name="EGL_CONDITION_SATISFIED_KHR" group="WaitSyncStatus" alias="EGL_CONDITION_SATISFIED"/>
+        <enum value="0x30F7" name="EGL_SYNC_TYPE" group="SyncAttribute"/>
+        <enum value="0x30F7" name="EGL_SYNC_TYPE_KHR" group="SyncAttribute" alias="EGL_SYNC_TYPE"/>
+        <enum value="0x30F8" name="EGL_SYNC_CONDITION" group="SyncAttribute"/>
+        <enum value="0x30F8" name="EGL_SYNC_CONDITION_KHR" group="SyncAttribute" alias="EGL_SYNC_CONDITION"/>
+        <enum value="0x30F9" name="EGL_SYNC_FENCE" group="SyncType"/>
+        <enum value="0x30F9" name="EGL_SYNC_FENCE_KHR" group="SyncType" alias="EGL_SYNC_FENCE"/>
+        <enum value="0x30FA" name="EGL_SYNC_REUSABLE_KHR" group="SyncType"/>
+        <enum value="0x30FB" name="EGL_CONTEXT_MINOR_VERSION" group="ContextAttribute"/>
+        <enum value="0x30FB" name="EGL_CONTEXT_MINOR_VERSION_KHR" group="ContextAttribute" alias="EGL_CONTEXT_MINOR_VERSION"/>
+        <enum value="0x30FC" name="EGL_CONTEXT_FLAGS_KHR" group="ContextAttribute"/>
+        <enum value="0x30FD" name="EGL_CONTEXT_OPENGL_PROFILE_MASK" group="ContextAttribute"/>
+        <enum value="0x30FD" name="EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR" group="ContextAttribute" alias="EGL_CONTEXT_OPENGL_PROFILE_MASK"/>
+        <enum value="0x30FE" name="EGL_SYNC_CL_EVENT" group="SyncType"/>
+        <enum value="0x30FE" name="EGL_SYNC_CL_EVENT_KHR" group="SyncType" alias="EGL_SYNC_CL_EVENT"/>
+        <enum value="0x30FF" name="EGL_SYNC_CL_EVENT_COMPLETE" group="SyncCondition"/>
+        <enum value="0x30FF" name="EGL_SYNC_CL_EVENT_COMPLETE_KHR" group="SyncCondition" alias="EGL_SYNC_CL_EVENT_COMPLETE"/>
     </enums>
 
     <enums namespace="EGL" start="0x3100" end="0x310F" vendor="IMG" comment="Reserved for Ben Bowman (Khronos bug 4748)">
-        <enum value="0x3100" name="EGL_CONTEXT_PRIORITY_LEVEL_IMG"/>
-        <enum value="0x3101" name="EGL_CONTEXT_PRIORITY_HIGH_IMG"/>
-        <enum value="0x3102" name="EGL_CONTEXT_PRIORITY_MEDIUM_IMG"/>
-        <enum value="0x3103" name="EGL_CONTEXT_PRIORITY_LOW_IMG"/>
+        <enum value="0x3100" name="EGL_CONTEXT_PRIORITY_LEVEL_IMG" group="ContextAttribute"/>
+        <enum value="0x3101" name="EGL_CONTEXT_PRIORITY_HIGH_IMG" group="ContextPriority"/>
+        <enum value="0x3102" name="EGL_CONTEXT_PRIORITY_MEDIUM_IMG" group="ContextPriority"/>
+        <enum value="0x3103" name="EGL_CONTEXT_PRIORITY_LOW_IMG" group="ContextPriority"/>
             <unused start="0x3104"/>
         <enum value="0x3105" name="EGL_NATIVE_BUFFER_MULTIPLANE_SEPARATE_IMG"/>
         <enum value="0x3106" name="EGL_NATIVE_BUFFER_PLANE_OFFSET_IMG"/>
@@ -455,7 +455,7 @@
     </enums>
 
     <enums namespace="EGL" start="0x3110" end="0x311F" vendor="ATX" comment="Reserved for Tim Renouf, Antix (Khronos bug 4949)">
-        <enum value="0x3110" name="EGL_BITMAP_PIXEL_SIZE_KHR"/>
+        <enum value="0x3110" name="EGL_BITMAP_PIXEL_SIZE_KHR" group="SurfaceQueryAttribute"/>
             <unused start="0x3111" end="0x311F"/>
     </enums>
 
@@ -477,33 +477,33 @@
 
     <enums namespace="EGL" start="0x3130" end="0x313F" vendor="NV" comment="Reserved for Greg Prisament (Khronos bug 5166)">
             <unused start="0x3130"/>
-        <enum value="0x3131" name="EGL_COVERAGE_SAMPLE_RESOLVE_NV"/>
-        <enum value="0x3132" name="EGL_COVERAGE_SAMPLE_RESOLVE_DEFAULT_NV"/>
-        <enum value="0x3133" name="EGL_COVERAGE_SAMPLE_RESOLVE_NONE_NV"/>
+        <enum value="0x3131" name="EGL_COVERAGE_SAMPLE_RESOLVE_NV" group="SurfaceAttribute"/>
+        <enum value="0x3132" name="EGL_COVERAGE_SAMPLE_RESOLVE_DEFAULT_NV" group="CoverageSampleResolve"/>
+        <enum value="0x3133" name="EGL_COVERAGE_SAMPLE_RESOLVE_NONE_NV" group="CoverageSampleResolve"/>
         <enum value="0x3134" name="EGL_MULTIVIEW_VIEW_COUNT_EXT"/>
             <unused start="0x3135"/>
         <enum value="0x3136" name="EGL_AUTO_STEREO_NV"/>
             <unused start="0x3137"/>
-        <enum value="0x3138" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_EXT"/>
+        <enum value="0x3138" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_EXT" group="ContextAttribute"/>
             <unused start="0x3139" end="0x313C"/>
         <enum value="0x313D" name="EGL_BUFFER_AGE_KHR"/>
         <enum value="0x313D" name="EGL_BUFFER_AGE_EXT" alias="EGL_BUFFER_AGE_KHR"/>
             <unused start="0x313E" end="0x313F"/>
-        <enum value="0x313F" name="EGL_PLATFORM_DEVICE_EXT"/>
+        <enum value="0x313F" name="EGL_PLATFORM_DEVICE_EXT" group="Platform"/>
     </enums>
 
     <enums namespace="EGL" start="0x3140" end="0x314F" vendor="Google" comment="Reserved for Mathias Agopian (Khronos bug 5199)">
         <enum value="0x3140" name="EGL_NATIVE_BUFFER_ANDROID"/>
-        <enum value="0x3141" name="EGL_PLATFORM_ANDROID_KHR"/>
+        <enum value="0x3141" name="EGL_PLATFORM_ANDROID_KHR" group="Platform"/>
         <enum value="0x3142" name="EGL_RECORDABLE_ANDROID"/>
         <enum value="0x3143" name="EGL_NATIVE_BUFFER_USAGE_ANDROID"/>
-        <enum value="0x3144" name="EGL_SYNC_NATIVE_FENCE_ANDROID"/>
+        <enum value="0x3144" name="EGL_SYNC_NATIVE_FENCE_ANDROID" group="SyncType"/>
         <enum value="0x3145" name="EGL_SYNC_NATIVE_FENCE_FD_ANDROID"/>
-        <enum value="0x3146" name="EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID"/>
+        <enum value="0x3146" name="EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID" group="SyncCondition"/>
         <enum value="0x3147" name="EGL_FRAMEBUFFER_TARGET_ANDROID"/>
             <unused start="0x3148" end="0x314B"/>
         <enum value="0x314C" name="EGL_FRONT_BUFFER_AUTO_REFRESH_ANDROID"/>
-        <enum value="0x314D" name="EGL_GL_COLORSPACE_DEFAULT_EXT"/>
+        <enum value="0x314D" name="EGL_GL_COLORSPACE_DEFAULT_EXT" group="GLColorSpace"/>
             <unused start="0x314E" end="0x314F"/>
     </enums>
 
@@ -524,19 +524,19 @@
     </enums>
 
     <enums namespace="EGL" start="0x31B0" end="0x31BF" vendor="KHR" comment="Reserved for Marcus Lorentzon (Khronos bug 6437)">
-        <enum value="0x31B0" name="EGL_CONTEXT_OPENGL_DEBUG"/>
-        <enum value="0x31B1" name="EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE"/>
-        <enum value="0x31B2" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS"/>
-        <enum value="0x31B3" name="EGL_CONTEXT_OPENGL_NO_ERROR_KHR"/>
+        <enum value="0x31B0" name="EGL_CONTEXT_OPENGL_DEBUG" group="ContextAttribute"/>
+        <enum value="0x31B1" name="EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE" group="ContextAttribute"/>
+        <enum value="0x31B2" name="EGL_CONTEXT_OPENGL_ROBUST_ACCESS" group="ContextAttribute"/>
+        <enum value="0x31B3" name="EGL_CONTEXT_OPENGL_NO_ERROR_KHR" group="ContextAttribute"/>
             <unused start="0x31B4" end="0x31BC" comment="0x31B3-0x31BC formerly reserved for EGL_image_stream"/>
-        <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_KHR" alias="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY"/>
-        <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY"/>
-        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION"/>
-        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION_KHR" alias="EGL_NO_RESET_NOTIFICATION"/>
-        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION_EXT" alias="EGL_NO_RESET_NOTIFICATION"/>
-        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET"/>
-        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET_KHR" alias="EGL_LOSE_CONTEXT_ON_RESET"/>
-        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET_EXT" alias="EGL_LOSE_CONTEXT_ON_RESET"/>
+        <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_KHR" group="ContextAttribute" alias="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY"/>
+        <enum value="0x31BD" name="EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY" group="ContextAttribute"/>
+        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION" group="ResetNotificationStrategy"/>
+        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION_KHR" group="ResetNotificationStrategy" alias="EGL_NO_RESET_NOTIFICATION"/>
+        <enum value="0x31BE" name="EGL_NO_RESET_NOTIFICATION_EXT" group="ResetNotificationStrategy" alias="EGL_NO_RESET_NOTIFICATION"/>
+        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET" group="ResetNotificationStrategy"/>
+        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET_KHR" group="ResetNotificationStrategy" alias="EGL_LOSE_CONTEXT_ON_RESET"/>
+        <enum value="0x31BF" name="EGL_LOSE_CONTEXT_ON_RESET_EXT" group="ResetNotificationStrategy" alias="EGL_LOSE_CONTEXT_ON_RESET"/>
     </enums>
 
     <enums namespace="EGL" start="0x31C0" end="0x31CF" vendor="QCOM" comment="Reserved for Maurice Ribble (Khronos bug 6644) - EGL_QCOM_create_image spec">
@@ -564,17 +564,17 @@
         <enum value="0x31D2" name="EGL_DRM_BUFFER_FORMAT_ARGB32_MESA"/>
         <enum value="0x31D3" name="EGL_DRM_BUFFER_MESA"/>
         <enum value="0x31D4" name="EGL_DRM_BUFFER_STRIDE_MESA"/>
-        <enum value="0x31D5" name="EGL_PLATFORM_X11_KHR"/>
-        <enum value="0x31D5" name="EGL_PLATFORM_X11_EXT" alias="EGL_PLATFORM_X11_KHR"/>
-        <enum value="0x31D6" name="EGL_PLATFORM_X11_SCREEN_KHR"/>
+        <enum value="0x31D5" name="EGL_PLATFORM_X11_KHR" group="Platform"/>
+        <enum value="0x31D5" name="EGL_PLATFORM_X11_EXT" group="Platform" alias="EGL_PLATFORM_X11_KHR"/>
+        <enum value="0x31D6" name="EGL_PLATFORM_X11_SCREEN_KHR" group="PlatformAttribute"/>
         <enum value="0x31D6" name="EGL_PLATFORM_X11_SCREEN_EXT" alias="EGL_PLATFORM_X11_SCREEN_KHR"/>
-        <enum value="0x31D7" name="EGL_PLATFORM_GBM_KHR"/>
-        <enum value="0x31D7" name="EGL_PLATFORM_GBM_MESA" alias="EGL_PLATFORM_GBM_KHR"/>
-        <enum value="0x31D8" name="EGL_PLATFORM_WAYLAND_KHR"/>
-        <enum value="0x31D8" name="EGL_PLATFORM_WAYLAND_EXT" alias="EGL_PLATFORM_WAYLAND_KHR"/>
-        <enum value="0x31DC" name="EGL_PLATFORM_XCB_EXT"/>
-        <enum value="0x31DD" name="EGL_PLATFORM_SURFACELESS_MESA"/>
-        <enum value="0x31DE" name="EGL_PLATFORM_XCB_SCREEN_EXT"/>
+        <enum value="0x31D7" name="EGL_PLATFORM_GBM_KHR" group="Platform"/>
+        <enum value="0x31D7" name="EGL_PLATFORM_GBM_MESA" group="Platform" alias="EGL_PLATFORM_GBM_KHR"/>
+        <enum value="0x31D8" name="EGL_PLATFORM_WAYLAND_KHR" group="Platform"/>
+        <enum value="0x31D8" name="EGL_PLATFORM_WAYLAND_EXT" group="Platform" alias="EGL_PLATFORM_WAYLAND_KHR"/>
+        <enum value="0x31DC" name="EGL_PLATFORM_XCB_EXT" group="Platform"/>
+        <enum value="0x31DD" name="EGL_PLATFORM_SURFACELESS_MESA" group="Platform"/>
+        <enum value="0x31DE" name="EGL_PLATFORM_XCB_SCREEN_EXT" group="PlatformAttribute"/>
         <enum value="0x31DF" name="EGL_PRESENT_OPAQUE_EXT"/>
     </enums>
 
@@ -614,10 +614,10 @@
             <enum value="0x31FA" name="EGL_FORMAT_RGB888_MESA"                              comment="Draft EGL_MESA_image_stream_internal"/>
             <enum value="0x31FB" name="EGL_FORMAT_RGB565_MESA"                              comment="Draft EGL_MESA_image_stream_internal"/>
         -->
-        <enum value="0x31FC" name="EGL_STREAM_FIFO_LENGTH_KHR"/>
-        <enum value="0x31FD" name="EGL_STREAM_TIME_NOW_KHR"/>
-        <enum value="0x31FE" name="EGL_STREAM_TIME_CONSUMER_KHR"/>
-        <enum value="0x31FF" name="EGL_STREAM_TIME_PRODUCER_KHR"/>
+        <enum value="0x31FC" name="EGL_STREAM_FIFO_LENGTH_KHR" group="StreamCreateAttribute,StreamQueryAttribute"/>
+        <enum value="0x31FD" name="EGL_STREAM_TIME_NOW_KHR" group="StreamTime"/>
+        <enum value="0x31FE" name="EGL_STREAM_TIME_CONSUMER_KHR" group="StreamTime"/>
+        <enum value="0x31FF" name="EGL_STREAM_TIME_PRODUCER_KHR" group="StreamTime"/>
     </enums>
 
     <enums namespace="EGL" start="0x3200" end="0x320F" vendor="ANGLE" comment="Reserved for Daniel Koch, ANGLE Project (Khronos bug 7139)">
@@ -627,22 +627,22 @@
     </enums>
 
     <enums namespace="EGL" start="0x3210" end="0x321F" vendor="KHR">
-        <enum value="0x3210" name="EGL_CONSUMER_LATENCY_USEC_KHR"/>
+        <enum value="0x3210" name="EGL_CONSUMER_LATENCY_USEC_KHR" group="StreamAttribute,StreamQueryAttribute"/>
             <unused start="0x3211"/>
-        <enum value="0x3212" name="EGL_PRODUCER_FRAME_KHR"/>
-        <enum value="0x3213" name="EGL_CONSUMER_FRAME_KHR"/>
-        <enum value="0x3214" name="EGL_STREAM_STATE_KHR"/>
-        <enum value="0x3215" name="EGL_STREAM_STATE_CREATED_KHR"/>
-        <enum value="0x3216" name="EGL_STREAM_STATE_CONNECTING_KHR"/>
-        <enum value="0x3217" name="EGL_STREAM_STATE_EMPTY_KHR"/>
-        <enum value="0x3218" name="EGL_STREAM_STATE_NEW_FRAME_AVAILABLE_KHR"/>
-        <enum value="0x3219" name="EGL_STREAM_STATE_OLD_FRAME_AVAILABLE_KHR"/>
-        <enum value="0x321A" name="EGL_STREAM_STATE_DISCONNECTED_KHR"/>
-        <enum value="0x321B" name="EGL_BAD_STREAM_KHR"/>
-        <enum value="0x321C" name="EGL_BAD_STATE_KHR"/>
+        <enum value="0x3212" name="EGL_PRODUCER_FRAME_KHR" group="StreamQueryU64Attribute"/>
+        <enum value="0x3213" name="EGL_CONSUMER_FRAME_KHR" group="StreamQueryU64Attribute"/>
+        <enum value="0x3214" name="EGL_STREAM_STATE_KHR" group="StreamQueryAttribute"/>
+        <enum value="0x3215" name="EGL_STREAM_STATE_CREATED_KHR" group="StreamState"/>
+        <enum value="0x3216" name="EGL_STREAM_STATE_CONNECTING_KHR" group="StreamState"/>
+        <enum value="0x3217" name="EGL_STREAM_STATE_EMPTY_KHR" group="StreamState"/>
+        <enum value="0x3218" name="EGL_STREAM_STATE_NEW_FRAME_AVAILABLE_KHR" group="StreamState"/>
+        <enum value="0x3219" name="EGL_STREAM_STATE_OLD_FRAME_AVAILABLE_KHR" group="StreamState"/>
+        <enum value="0x321A" name="EGL_STREAM_STATE_DISCONNECTED_KHR" group="StreamState"/>
+        <enum value="0x321B" name="EGL_BAD_STREAM_KHR" group="ErrorCode"/>
+        <enum value="0x321C" name="EGL_BAD_STATE_KHR" group="ErrorCode"/>
         <enum value="0x321D" name="EGL_BUFFER_COUNT_NV" comment="From EGL_NV_stream_producer_eglsurface, which has no known specification and was replaced by a KHR extension"/>
         <enum value="0x321E" name="EGL_CONSUMER_ACQUIRE_TIMEOUT_USEC_KHR"/>
-        <enum value="0x321F" name="EGL_SYNC_NEW_FRAME_NV"/>
+        <enum value="0x321F" name="EGL_SYNC_NEW_FRAME_NV" group="SyncType"/>
     </enums>
 
     <enums namespace="EGL" start="0x3220" end="0x325F" vendor="NV" comment="Reserved for Greg Roth (Bug 8220)">
@@ -833,8 +833,8 @@
         <enum value="0x333C" name="EGL_DRM_MASTER_FD_EXT"/>
         <enum value="0x333D" name="EGL_OPENWF_DEVICE_EXT"/>
             <unused start="0x333E"/>
-        <enum value="0x333F" name="EGL_GL_COLORSPACE_BT2020_LINEAR_EXT"/>
-        <enum value="0x3340" name="EGL_GL_COLORSPACE_BT2020_PQ_EXT"/>
+        <enum value="0x333F" name="EGL_GL_COLORSPACE_BT2020_LINEAR_EXT" group="GLColorSpace"/>
+        <enum value="0x3340" name="EGL_GL_COLORSPACE_BT2020_PQ_EXT" group="GLColorSpace"/>
         <enum value="0x3341" name="EGL_SMPTE2086_DISPLAY_PRIMARY_RX_EXT"/>
         <enum value="0x3342" name="EGL_SMPTE2086_DISPLAY_PRIMARY_RY_EXT"/>
         <enum value="0x3343" name="EGL_SMPTE2086_DISPLAY_PRIMARY_GX_EXT"/>
@@ -851,11 +851,11 @@
         <enum value="0x334D" name="EGL_STREAM_CROSS_OBJECT_NV"/>
         <enum value="0x334E" name="EGL_STREAM_CROSS_DISPLAY_NV"/>
         <enum value="0x334F" name="EGL_STREAM_CROSS_SYSTEM_NV"/>
-        <enum value="0x3350" name="EGL_GL_COLORSPACE_SCRGB_LINEAR_EXT"/>
-        <enum value="0x3351" name="EGL_GL_COLORSPACE_SCRGB_EXT"/>
+        <enum value="0x3350" name="EGL_GL_COLORSPACE_SCRGB_LINEAR_EXT" group="GLColorSpace"/>
+        <enum value="0x3351" name="EGL_GL_COLORSPACE_SCRGB_EXT" group="GLColorSpace"/>
         <enum value="0x3352" name="EGL_TRACK_REFERENCES_KHR"/>
             <unused start="0x3353" end="0x3356"/>
-        <enum value="0x3357" name="EGL_CONTEXT_PRIORITY_REALTIME_NV"/>
+        <enum value="0x3357" name="EGL_CONTEXT_PRIORITY_REALTIME_NV" group="ContextPriority"/>
             <unused start="0x3358" end="0x335B"/>
         <enum value="0x335C" name="EGL_DEVICE_UUID_EXT"/>
         <enum value="0x335D" name="EGL_DRIVER_UUID_EXT"/>
@@ -863,8 +863,8 @@
         <enum value="0x335F" name="EGL_RENDERER_EXT"/>
         <enum value="0x3360" name="EGL_CTA861_3_MAX_CONTENT_LIGHT_LEVEL_EXT"/>
         <enum value="0x3361" name="EGL_CTA861_3_MAX_FRAME_AVERAGE_LEVEL_EXT"/>
-        <enum value="0x3362" name="EGL_GL_COLORSPACE_DISPLAY_P3_LINEAR_EXT"/>
-        <enum value="0x3363" name="EGL_GL_COLORSPACE_DISPLAY_P3_EXT"/>
+        <enum value="0x3362" name="EGL_GL_COLORSPACE_DISPLAY_P3_LINEAR_EXT" group="GLColorSpace"/>
+        <enum value="0x3363" name="EGL_GL_COLORSPACE_DISPLAY_P3_EXT" group="GLColorSpace"/>
         <enum value="0x3364" name="EGL_SYNC_CLIENT_EXT"/>
         <enum value="0x3365" name="EGL_SYNC_CLIENT_SIGNAL_EXT"/>
         <enum value="0x3366" name="EGL_STREAM_FRAME_ORIGIN_X_NV"/>
@@ -1023,7 +1023,7 @@
             <unused start="0x3480" end="0x348F"/>
     </enums>
     <enums namespace="EGL" start="0x3490" end="0x349F" vendor="EXT" comment="Reserved for Courtney Goeltzenleuchter - Android (gitlab EGL bug 69)">
-        <enum value="0x3490" name="EGL_GL_COLORSPACE_DISPLAY_P3_PASSTHROUGH_EXT"/>
+        <enum value="0x3490" name="EGL_GL_COLORSPACE_DISPLAY_P3_PASSTHROUGH_EXT" group="GLColorSpace"/>
             <unused start="0x3491" end="0x349F"/>
     </enums>
     <enums namespace="EGL" start="0x34A0" end="0x34AF" vendor="ANGLE" comment="Reserved for Ken Russell - ANGLE (via github pull request)">
@@ -1076,12 +1076,12 @@
     </enums>
 
     <enums namespace="EGL" start="0x3540" end="0x354F" vendor="EXT" comment="Reserved for Chris Glover (EGL_EXT_gl_colorspace_bt2020)">
-            <enum value="0x3540" name="EGL_GL_COLORSPACE_BT2020_HLG_EXT"/>
+            <enum value="0x3540" name="EGL_GL_COLORSPACE_BT2020_HLG_EXT" group="GLColorSpace"/>
                 <unused start="0x3541" end="0x354F"/>
     </enums>
 
     <enums namespace="EGL" start="0x3550" end="0x355F" vendor="QNX" comment="Reserved for Mike Gorchak of QNX (QNX platform and native buffer)">
-        <enum value="0x3550" name="EGL_PLATFORM_SCREEN_QNX"/>
+        <enum value="0x3550" name="EGL_PLATFORM_SCREEN_QNX" group="Platform"/>
         <enum value="0x3551" name="EGL_NATIVE_BUFFER_QNX"/>
             <unused start="0x3552" end="0x355F"/>
     </enums>
@@ -1120,7 +1120,7 @@
     <commands namespace="EGL">
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglBindAPI</name></proto>
-            <param><ptype>EGLenum</ptype> <name>api</name></param>
+            <param group="RenderApi"><ptype>EGLenum</ptype> <name>api</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglBindTexImage</name></proto>
@@ -1143,24 +1143,24 @@
             <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
-            <proto><ptype>EGLint</ptype> <name>eglClientWaitSync</name></proto>
+            <proto group="WaitSyncStatus"><ptype>EGLint</ptype> <name>eglClientWaitSync</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSync</ptype> <name>sync</name></param>
-            <param><ptype>EGLint</ptype> <name>flags</name></param>
+            <param group="ClientWaitSyncFlags"><ptype>EGLint</ptype> <name>flags</name></param>
             <param><ptype>EGLTime</ptype> <name>timeout</name></param>
         </command>
         <command>
-            <proto><ptype>EGLint</ptype> <name>eglClientWaitSyncKHR</name></proto>
+            <proto group="WaitSyncStatus"><ptype>EGLint</ptype> <name>eglClientWaitSyncKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSyncKHR</ptype> <name>sync</name></param>
-            <param><ptype>EGLint</ptype> <name>flags</name></param>
+            <param group="ClientWaitSyncFlags"><ptype>EGLint</ptype> <name>flags</name></param>
             <param><ptype>EGLTimeKHR</ptype> <name>timeout</name></param>
             <alias name="eglClientWaitSync"/>
         </command>
         <command>
-            <proto><ptype>EGLint</ptype> <name>eglClientWaitSyncNV</name></proto>
+            <proto group="WaitSyncStatus"><ptype>EGLint</ptype> <name>eglClientWaitSyncNV</name></proto>
             <param><ptype>EGLSyncNV</ptype> <name>sync</name></param>
-            <param><ptype>EGLint</ptype> <name>flags</name></param>
+            <param group="ClientWaitSyncFlags"><ptype>EGLint</ptype> <name>flags</name></param>
             <param><ptype>EGLTimeNV</ptype> <name>timeout</name></param>
         </command>
         <command>
@@ -1184,14 +1184,14 @@
         <command>
             <proto><ptype>EGLSyncNV</ptype> <name>eglCreateFenceSyncNV</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLenum</ptype> <name>condition</name></param>
+            <param group="SyncCondition"><ptype>EGLenum</ptype> <name>condition</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLImage</ptype> <name>eglCreateImage</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLContext</ptype> <name>ctx</name></param>
-            <param><ptype>EGLenum</ptype> <name>target</name></param>
+            <param group="gl::TextureTarget"><ptype>EGLenum</ptype> <name>target</name></param>
             <param><ptype>EGLClientBuffer</ptype> <name>buffer</name></param>
             <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
         </command>
@@ -1199,7 +1199,7 @@
             <proto><ptype>EGLImageKHR</ptype> <name>eglCreateImageKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLContext</ptype> <name>ctx</name></param>
-            <param><ptype>EGLenum</ptype> <name>target</name></param>
+            <param group="gl::TextureTarget"><ptype>EGLenum</ptype> <name>target</name></param>
             <param><ptype>EGLClientBuffer</ptype> <name>buffer</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
@@ -1210,7 +1210,7 @@
         <command>
             <proto><ptype>EGLSurface</ptype> <name>eglCreatePbufferFromClientBuffer</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLenum</ptype> <name>buftype</name></param>
+            <param group="ClientBufferType"><ptype>EGLenum</ptype> <name>buftype</name></param>
             <param><ptype>EGLClientBuffer</ptype> <name>buffer</name></param>
             <param><ptype>EGLConfig</ptype> <name>config</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
@@ -1288,25 +1288,25 @@
             <proto><ptype>EGLSyncKHR</ptype> <name>eglCreateStreamSyncNV</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>type</name></param>
+            <param group="SyncType"><ptype>EGLenum</ptype> <name>type</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLSync</ptype> <name>eglCreateSync</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLenum</ptype> <name>type</name></param>
+            <param group="SyncType"><ptype>EGLenum</ptype> <name>type</name></param>
             <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLSyncKHR</ptype> <name>eglCreateSyncKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLenum</ptype> <name>type</name></param>
+            <param group="SyncType"><ptype>EGLenum</ptype> <name>type</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLSyncKHR</ptype> <name>eglCreateSync64KHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLenum</ptype> <name>type</name></param>
+            <param group="SyncType"><ptype>EGLenum</ptype> <name>type</name></param>
             <param>const <ptype>EGLAttribKHR</ptype> *<name>attrib_list</name></param>
             <alias name="eglCreateSync"/>
         </command>
@@ -1400,15 +1400,15 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglGetConfigAttrib</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLConfig</ptype> <name>config</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
-            <param><ptype>EGLint</ptype> *<name>value</name></param>
+            <param group="ConfigAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param len="1"><ptype>EGLint</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglGetConfigs</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLConfig</ptype> *<name>configs</name></param>
+            <param len="config_size"><ptype>EGLConfig</ptype> *<name>configs</name></param>
             <param><ptype>EGLint</ptype> <name>config_size</name></param>
-            <param><ptype>EGLint</ptype> *<name>num_config</name></param>
+            <param len="1"><ptype>EGLint</ptype> *<name>num_config</name></param>
         </command>
         <command>
             <proto><ptype>EGLContext</ptype> <name>eglGetCurrentContext</name></proto>
@@ -1418,7 +1418,7 @@
         </command>
         <command>
             <proto><ptype>EGLSurface</ptype> <name>eglGetCurrentSurface</name></proto>
-            <param><ptype>EGLint</ptype> <name>readdraw</name></param>
+            <param group="ReadDrawFlags"><ptype>EGLint</ptype> <name>readdraw</name></param>
         </command>
         <command>
             <proto><ptype>EGLDisplay</ptype> <name>eglGetDisplay</name></proto>
@@ -1433,7 +1433,7 @@
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
         </command>
         <command>
-            <proto><ptype>EGLint</ptype> <name>eglGetError</name></proto>
+            <proto group="ErrorCode"><ptype>EGLint</ptype> <name>eglGetError</name></proto>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglGetMscRateANGLE</name></proto>
@@ -1464,13 +1464,13 @@
         </command>
         <command>
             <proto><ptype>EGLDisplay</ptype> <name>eglGetPlatformDisplay</name></proto>
-            <param><ptype>EGLenum</ptype> <name>platform</name></param>
+            <param group="Platform"><ptype>EGLenum</ptype> <name>platform</name></param>
             <param>void *<name>native_display</name></param>
             <param>const <ptype>EGLAttrib</ptype> *<name>attrib_list</name></param>
         </command>
         <command>
             <proto><ptype>EGLDisplay</ptype> <name>eglGetPlatformDisplayEXT</name></proto>
-            <param><ptype>EGLenum</ptype> <name>platform</name></param>
+            <param group="Platform"><ptype>EGLenum</ptype> <name>platform</name></param>
             <param>void *<name>native_display</name></param>
             <param>const <ptype>EGLint</ptype> *<name>attrib_list</name></param>
         </command>
@@ -1512,8 +1512,8 @@
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglInitialize</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLint</ptype> *<name>major</name></param>
-            <param><ptype>EGLint</ptype> *<name>minor</name></param>
+            <param len="1"><ptype>EGLint</ptype> *<name>major</name></param>
+            <param len="1"><ptype>EGLint</ptype> *<name>minor</name></param>
         </command>
         <command>
             <proto><ptype>EGLint</ptype> <name>eglLabelObjectKHR</name></proto>
@@ -1600,13 +1600,13 @@
             <param><ptype>EGLnsecsANDROID</ptype> *<name>values</name></param>
         </command>
         <command>
-            <proto><ptype>EGLenum</ptype> <name>eglQueryAPI</name></proto>
+            <proto group="RenderApi"><ptype>EGLenum</ptype> <name>eglQueryAPI</name></proto>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryContext</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLContext</ptype> <name>ctx</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param group="ContextQueryAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
             <param><ptype>EGLint</ptype> *<name>value</name></param>
         </command>
         <command>
@@ -1714,14 +1714,14 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryStreamKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamQueryAttribute"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLint</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryStreamAttribKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamQueryAttribute"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLAttrib</ptype> *<name>value</name></param>
         </command>
         <command>
@@ -1738,20 +1738,20 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryStreamTimeKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamTime"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLTimeKHR</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQueryStreamu64KHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamQueryU64Attribute"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLuint64KHR</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto>const char *<name>eglQueryString</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
-            <param><ptype>EGLint</ptype> <name>name</name></param>
+            <param group="StringName"><ptype>EGLint</ptype> <name>name</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQuerySupportedCompressionRatesEXT</name></proto>
@@ -1766,21 +1766,21 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglQuerySurface</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSurface</ptype> <name>surface</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param group="SurfaceQueryAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
             <param><ptype>EGLint</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQuerySurface64KHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSurface</ptype> <name>surface</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param group="SurfaceQueryAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
             <param><ptype>EGLAttribKHR</ptype> *<name>value</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglQuerySurfacePointerANGLE</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSurface</ptype> <name>surface</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param group="SurfaceQueryAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
             <param>void **<name>value</name></param>
         </command>
         <command>
@@ -1814,7 +1814,7 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglSetStreamAttribKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamQueryAttribute"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLAttrib</ptype> <name>value</name></param>
         </command>
         <command>
@@ -1830,18 +1830,18 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglSignalSyncKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSyncKHR</ptype> <name>sync</name></param>
-            <param><ptype>EGLenum</ptype> <name>mode</name></param>
+            <param group="SyncState"><ptype>EGLenum</ptype> <name>mode</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglSignalSyncNV</name></proto>
             <param><ptype>EGLSyncNV</ptype> <name>sync</name></param>
-            <param><ptype>EGLenum</ptype> <name>mode</name></param>
+            <param group="SyncState"><ptype>EGLenum</ptype> <name>mode</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglStreamAttribKHR</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLStreamKHR</ptype> <name>stream</name></param>
-            <param><ptype>EGLenum</ptype> <name>attribute</name></param>
+            <param group="StreamAttribute"><ptype>EGLenum</ptype> <name>attribute</name></param>
             <param><ptype>EGLint</ptype> <name>value</name></param>
         </command>
         <command>
@@ -1892,7 +1892,7 @@
             <proto><ptype>EGLBoolean</ptype> <name>eglSurfaceAttrib</name></proto>
             <param><ptype>EGLDisplay</ptype> <name>dpy</name></param>
             <param><ptype>EGLSurface</ptype> <name>surface</name></param>
-            <param><ptype>EGLint</ptype> <name>attribute</name></param>
+            <param group="SurfaceAttribute"><ptype>EGLint</ptype> <name>attribute</name></param>
             <param><ptype>EGLint</ptype> <name>value</name></param>
         </command>
         <command>
@@ -1956,7 +1956,7 @@
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglWaitNative</name></proto>
-            <param><ptype>EGLint</ptype> <name>engine</name></param>
+            <param group="NativeEngine"><ptype>EGLint</ptype> <name>engine</name></param>
         </command>
         <command>
             <proto><ptype>EGLBoolean</ptype> <name>eglWaitSync</name></proto>
